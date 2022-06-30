@@ -1,12 +1,12 @@
 CREATE TABLE if not exists "users" (
     id          SERIAL PRIMARY KEY,
-    username    TEXT UNIQUE NOT NULL,
+    username    TEXT NOT NULL UNIQUE,
     password    TEXT NOT NULL,
     first_name  TEXT NOT NULL,
     last_name   TEXT NOT NULL,
-    email       TEXT UNIQUE NOT NULL,
-    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP 
+    email       TEXT NOT NULL UNIQUE CHECK (POSITION('@' in email) > 1),
+    created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at  TIMESTAMP NOT NULL DEFAULT NOW()
 
 );
 
@@ -16,7 +16,7 @@ CREATE TABLE if not exists "nutrition" (
     category    TEXT NOT NULL,
     calories    INTEGER NOT NULL,
     image_url   TEXT NOT NULL,
-    user_id     TEXT NOT NULL,
+    user_id     INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
     created_at  TIMESTAMP NOT NULL
 
