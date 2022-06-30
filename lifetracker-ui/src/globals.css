@@ -10,6 +10,42 @@ body {
   box-sizing: border-box;
 }
 
+input {
+  height: 60px;
+  padding: 0 15px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  width: 100%;
+  background: transparent;
+  color: var(--pure-white);
+}
+
 :root {
-  --codepath-dark-green: #2c4147;
+  --side-padding: 40px;
+  --side-padding: 80px;
+  --content-width: 1100px;
+  --navbar-height: 100px;
+  --dark-background: #2c4147;
+  --less-dark-background: #3d4a46;
+  --bright-green: #00c98e;
+  --pure-white: #fff;
+  --grey-bg: #f7f7f7;
+  --accent-gold: #ffab09;
+  --accent-aqua: #03c5d1;
+  --accent-blue: #4e81eb;
+  --bright-red: #fe3210;
+  --red-linear-gradient: linear-gradient(64.7deg,rgba(251,112,144,0.25),#c90000);
+  --red-linear-gradient: linear-gradient(64.7deg,rgba(251,112,144,0.85),#c90000);
+  --red-linear-gradient: linear-gradient(64.7deg,#c90000,rgba(251,112,144,0.85));
+  --blue-linear-gradient: linear-gradient(64.7deg,#4e81eb,#4e81eb);
+  --purple-linear-gradient: linear-gradient(64.7deg,#441dfc,#4e81eb);
+  --orange-linear-gradient: linear-gradient(64.7deg,#8e3232,#c96d00);
+  --teal-linear-gradient: linear-gradient(64.7deg,#1000c9,#00c98e);
+  --aqua-linear-gradient: linear-gradient(64.7deg,#03c5d1,#03c5d1);
+  --gold-linear-gradient: linear-gradient(64.7deg,#ffab09,#ffab09);
+  --muted: #969696;
+  --font-dark: #212121;
+  --font-light: #5b5b5b;
+  --border-color: #e4e4e4;
+  --color-secondary: var(--bright-green);
 }
