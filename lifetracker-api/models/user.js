@@ -9,10 +9,9 @@ class User {
         return {
             id: user.id,
             email: user.email,
+            username: user.username,
             firstName: user.first_name,
-            lastName: user.last_name,
-            location: user.location,
-            date: user.date
+            lastName: user.last_name
         }
     }
 
@@ -21,8 +20,8 @@ class User {
         const requiredFields = ["email", "password"]
         requiredFields.forEach((field) => {
             if (!credentials.hasOwnProperty(field)) {
-            throw new BadRequestError(`Missing ${field} in request body.`)            }
-        })
+            throw new BadRequestError(`Missing ${field} in request body.`)
+        }})
 
         // look up user in database with email
         const user = await User.fetchUserByEmail(credentials.email)
@@ -74,7 +73,7 @@ class User {
                 password,
                 first_name,
                 last_name,
-                email,
+                email
             )
             VALUES ($1, $2, $3, $4, $5)
             RETURNING username, password, first_name, last_name, email;
@@ -92,8 +91,22 @@ class User {
             throw new BadRequestError("No email provided")
         }
 
-        const query = `SELECT * FROM users WHERE email = $1`
+        const query = `SELECT * FROM users WHERE email = $5`
         const result = await db.query(query, [email.toLowerCase()])
+        // grab first row and return 
+        const user = result.rows[0]
+
+        return user
+    }
+
+    // look up user by their username
+    static async fetchUserByUsername(username) {
+        if (!username) {
+            throw new BadRequestError("No username provided")
+        }
+
+        const query = `SELECT * FROM users WHERE username = $1`
+        const result = await db.query(query, [username.toLowerCase()])
         // grab first row and return 
         const user = result.rows[0]
 
