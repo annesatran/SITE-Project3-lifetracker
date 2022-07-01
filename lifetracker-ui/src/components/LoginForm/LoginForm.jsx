@@ -1,5 +1,7 @@
+import e from "cors"
 import * as React from "react"
 import { Link, useNavigate } from "react-router-dom"
+import apiClient from "../../services/apiClient"
 import "./LoginForm.css"
 
 export default function LoginForm() {
@@ -16,15 +18,21 @@ export default function LoginForm() {
         setErrors((e) => ({ ...e, email: null }))
       }
     }
-    
     setForm((f) => ({ ...f, [evt.target.name]: evt.target.value }))
-
   }
 
   const loginUser = async (evt) => {
-    evt.preventDefault()
     setErrors((e) => ({ ...e, form: null }))
+
+    const { data, error } = await apiClient.login( {email: form.email, password: form.password} )
+    if (error) {
+      setErrors((e) => ({...e, form: error }))
+    }
+    if (data?.user) {
+      apiClient.setToken(data.token)
+    }
   }
+
 
 
   return (

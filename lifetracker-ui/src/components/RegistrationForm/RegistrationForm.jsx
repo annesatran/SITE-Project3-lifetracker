@@ -1,6 +1,7 @@
 import e from "cors"
 import * as React from "react"
 import { useNavigate, Link } from "react-router-dom"
+import apiClient from "../../services/apiClient"
 import "./RegistrationForm.css"
 
 export default function RegistrationForm() {
@@ -43,18 +44,30 @@ export default function RegistrationForm() {
   }
 
   const signupUser = async () => {
-    setIsLoading(true)
+    evt.preventDefault()
     setErrors((e) => ({ ...e, form: null }))
 
-    // confirm that passwords match
-    if (form.passwordConfirm !== form.password) {
-      setErrors((e) => ({ ...e, passwordConfirm: "Passwords don't match." }))
-      setIsLoading(false)
-      return
+    if (form.password !== form.passwordConfirm) {
+      setErrors((e) => ({ ...e, passwordConfirm: "Passwords don't match" }))
     } else {
       setErrors((e) => ({ ...e, passwordConfirm: null }))
     }
+
+    const { data, error } = await apiClient.signup( {email: form.email,
+                                                     username: form.username,
+                                                     firstName: form.firstName,
+                                                     lastName: form.lastName,
+                                                     password: form.password,
+                                                    })
+    if (error) {
+      setErrors((e) => ({...e, form: error }))
+    }
+    if (data?.user) {
+      apiClient.setToken(data.token)
+    }
   }
+
+  ["email", "username","firstName", "lastName", "password"]
   
   return (
     <div className="registration-form">

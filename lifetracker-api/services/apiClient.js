@@ -12,28 +12,45 @@ class ApiClient {
         this.token = token
     }
 
-    static request(type, requestBody, endpoint) {
-        // type: either "get" or "post"
-        // requestBody
-        // endpoint: ex. "/auth/login"
-        // do axios request stuff here
+    async request(endpoint, method = "GET", data = {}) {
+        const url = `${this.remoteHostUrl}/${endpoint}`
+
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        // if token exists, attach Authorization header
+        if (this.token) {
+            headers["Authorization"] = `Bearer ${this.token}`
+        }
+
+        try {
+            const res = await axios({ url, method, data, headers })
+            return { data: res.data, error: null}
+        } catch(err) {
+            console.error( {errorResponse: err.response} )
+            const message = error?.response?.data?.error?.message
+            return { data: null, error: message || String(error) }
+        }
     }
 
-    login() {
+    async login(credentials) {
         // call request method to send http request to auth/login endpoint
-        this.request("POST", {}, "/auth/login")
+        return await this.request({ endpoint:"/auth/login", method:'POST', data:credentials })
     }
 
-    signup() {
+    async signup(credentials) {
         // call request method to send http request to auth/register endpoint
+        return await this.request({ endpoint:"/auth/register", method:'POST', data:credentials })
     }
 
-    fetchUserFromToken() {
+    async fetchUserFromToken() {
         // call request method to send http request to the auth/me endpoint
+        return await this.request({ endpoint:"/auth/me", method:'GET', data:{} })
     }
 
     // add more methods here as needed for making api requests
 
 }
 
-module.exports = new ApiClient(API_BASE_URL)
+export default new ApiClient(API_BASE_URL || "http://localhost:3001")
