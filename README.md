@@ -39,23 +39,22 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+Week 4 Walkthrough - NavBar, Landing page, login, registration, JWT tokens, authentication, and security middleware complete
+![](https://i.imgur.com/14DCmqz.gif)
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-[Add your response here]
+Since we didn't do the labs for JWTs and authentication yet, I felt the most unprepared to complete these sections. We had to go in and learn everything while we were coding up the project, so I didn't feel fully comfortable with the material yet.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-[Add your response here]
+I wish I had more time to fully hook up the front end and backend. My backend is basically fully setup for the authentication, but it just hasn't been wired in with my frontend yet.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-[Add your response here]
+Similar to my answer above, I wish I was able to showcase more during my demo since most of my work was in the backend and couldn't presented or visualized well.
 
 ### Open-source libraries used
 
@@ -65,7 +64,7 @@ Implement any of the following features to improve the application:
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
-[Add your response here]
+I'd like to give a shoutout to my pod mates. We went through a lot of issues that really stunted our ability to make progress throughout the entire week, which was super frustrating, but they're all super great and I'm glad to have the opportunity to work with them more.
 
 
 
