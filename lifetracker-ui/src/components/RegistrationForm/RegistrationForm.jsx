@@ -44,7 +44,6 @@ export default function RegistrationForm() {
   }
 
   const signupUser = async () => {
-    evt.preventDefault()
     setErrors((e) => ({ ...e, form: null }))
 
     if (form.password !== form.passwordConfirm) {
@@ -59,9 +58,8 @@ export default function RegistrationForm() {
                                                      lastName: form.lastName,
                                                      password: form.password,
                                                     })
-    if (error) {
-      setErrors((e) => ({...e, form: error }))
-    }
+    if (error) setErrors((e) => ({...e, form: error }))
+    
     if (data?.user) {
       apiClient.setToken(data.token)
     }
@@ -102,28 +100,30 @@ export default function RegistrationForm() {
             {errors.username && <span className="error">{errors.usernamel}</span>}
           </div>
 
-          <div className="input-field">
-            <input
-              className = "form-input"
-              name = "firstName"
-              type = "text"
-              value = {form.firstName}
-              onChange = {handleOnInputChange}
-              placeholder = "First Name"
-            />
-            {errors.firstName && <span className="error">{errors.firstName}</span>}
-          </div>
+          <div className="name-inputs">
+            <div className="input-field">
+              <input
+                className = "form-input"
+                name = "firstName"
+                type = "text"
+                value = {form.firstName}
+                onChange = {handleOnInputChange}
+                placeholder = "First Name"
+              />
+              {errors.firstName && <span className="error">{errors.firstName}</span>}
+            </div>
 
-          <div className="input-field">
-            <input
-              className = "form-input"
-              name = "lastName"
-              type = "text"
-              value = {form.lastName}
-              onChange = {handleOnInputChange}
-              placeholder = "Last Name"
-            />
-            {errors.lastName && <span className="error">{errors.lastName}</span>}
+            <div className="input-field">
+              <input
+                className = "form-input"
+                name = "lastName"
+                type = "text"
+                value = {form.lastName}
+                onChange = {handleOnInputChange}
+                placeholder = "Last Name"
+              />
+              {errors.lastName && <span className="error">{errors.lastName}</span>}
+            </div>
           </div>
 
           <div className="input-field">

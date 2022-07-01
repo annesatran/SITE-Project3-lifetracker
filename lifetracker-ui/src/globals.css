@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,29 +13,33 @@ body {
 }
 
 input {
-  height: 60px;
   padding: 0 15px;
   font-size: 16px;
-  border: 1px solid var(--border-color);
   width: 100%;
-  background: transparent;
-  color: var(--pure-white);
+  height: 60px;
+  font-size: 16px;
+  border: 0px solid var(--border-color);
+  outline: none;
+  width: 100%;
+  background-color:#f4f5fa;
+  border-radius: calc(var(--border-radius) - 10px);
+  transition: background-color 0.2s ease-in-out;
+  font-family: inherit;
 }
 
 :root {
+  --navbar-height: 80px;
+  --card-padding: 40px;
   --side-padding: 40px;
-  --side-padding: 80px;
   --content-width: 1100px;
   --navbar-height: 100px;
   --dark-background: #2c4147;
   --less-dark-background: #3d4a46;
   --bright-green: #00c98e;
   --pure-white: #fff;
-  --grey-bg: #f7f7f7;
-  --accent-gold: #ffab09;
-  --accent-aqua: #03c5d1;
-  --accent-blue: #4e81eb;
-  --bright-red: #fe3210;
+  --grey-bg: #f4f5f9;
+  --teal-accent: #68cad7;
+  --border-radius: 15px;
   --red-linear-gradient: linear-gradient(64.7deg,rgba(251,112,144,0.25),#c90000);
   --red-linear-gradient: linear-gradient(64.7deg,rgba(251,112,144,0.85),#c90000);
   --red-linear-gradient: linear-gradient(64.7deg,#c90000,rgba(251,112,144,0.85));
@@ -45,7 +51,7 @@ input {
   --gold-linear-gradient: linear-gradient(64.7deg,#ffab09,#ffab09);
   --muted: #969696;
   --font-dark: #212121;
-  --font-light: #5b5b5b;
+  --font-light: hsl(0, 0%, 36%);
   --border-color: #e4e4e4;
   --color-secondary: var(--bright-green);
 }
