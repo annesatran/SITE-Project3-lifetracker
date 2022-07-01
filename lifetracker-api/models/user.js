@@ -76,7 +76,7 @@ class User {
                 email
             )
             VALUES ($1, $2, $3, $4, $5)
-            RETURNING username, password, first_name, last_name, email;
+            RETURNING id, username, password, first_name, last_name, email;
         `, [lowercasedUsername, hashedPassword, credentials.firstName, credentials.lastName, lowercasedEmail])
 
         // return the user
@@ -91,7 +91,7 @@ class User {
             throw new BadRequestError("No email provided")
         }
 
-        const query = `SELECT * FROM users WHERE email = $5`
+        const query = `SELECT * FROM users WHERE email = $1`
         const result = await db.query(query, [email.toLowerCase()])
         // grab first row and return 
         const user = result.rows[0]

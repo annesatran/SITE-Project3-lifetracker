@@ -1,11 +1,11 @@
-const jwt = required("jsonwebtoken")
-const { SECRET_KEY } = required("../config")
-const { UnauthorizedError } = required("../utils/errors")
+const jwt = require("jsonwebtoken")
+const { SECRET_KEY } = require("../config")
+const { UnauthorizedError } = require("../utils/errors")
 
 // extract JWT from request header
 const jwtFrom = ({ headers }) => {
-    if (headers?.Authentication) {
-        const [scheme, token] = headers.Authentication.split(" ")
+    if (headers?.authorization) {
+        const [scheme, token] = headers.authorization.split(" ")
         if (scheme.trim() === "Bearer") {
             return token
         }
@@ -16,7 +16,7 @@ const jwtFrom = ({ headers }) => {
 // extract user from a valid JWT in the request
 const extractUserFromJwt = (req, res, next) => {
     try {
-        const token = jwtFrom(res)
+        const token = jwtFrom(req)
         if (token) {
             res.locals.user = jwt.verify(token, SECRET_KEY)
         }
@@ -29,9 +29,10 @@ const extractUserFromJwt = (req, res, next) => {
 const requireAuthenticatedUser = (req, res, next) => {
     try {
         const { user } = res.locals
-        if (user?.email) {
+        if (!user?.email) {
             throw new UnauthorizedError()
         }
+        return next()
     } catch(err) {
         return next(err)
     }
