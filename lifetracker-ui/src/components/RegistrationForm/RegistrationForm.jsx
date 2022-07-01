@@ -66,8 +66,6 @@ export default function RegistrationForm() {
       apiClient.setToken(data.token)
     }
   }
-
-  ["email", "username","firstName", "lastName", "password"]
   
   return (
     <div className="registration-form">

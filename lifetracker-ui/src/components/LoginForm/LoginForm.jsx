@@ -21,7 +21,7 @@ export default function LoginForm() {
     setForm((f) => ({ ...f, [evt.target.name]: evt.target.value }))
   }
 
-  const loginUser = async (evt) => {
+  const loginUser = async () => {
     setErrors((e) => ({ ...e, form: null }))
 
     const { data, error } = await apiClient.login( {email: form.email, password: form.password} )
