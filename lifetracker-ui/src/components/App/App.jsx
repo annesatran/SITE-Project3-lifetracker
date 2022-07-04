@@ -1,15 +1,25 @@
 import * as React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { AuthContextProvider, useAuthContext } from "../../contexts/auth"
 import Navbar from "../Navbar/Navbar"
 import Landing from "../Landing/Landing"
 import LoginPage from "../LoginPage/LoginPage"
 import RegistrationPage from "../RegistrationPage/RegistrationPage"
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"
 import ActivityPage from "../ActivityPage/ActivityPage"
 import NutritionPage from "../NutritionPage/NuritionPage"
 import NotFound from "../NotFound/NotFound"
 import "./App.css"
 
-export default function App() {
+export default function AppContainer() {
+  return (
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
+  )
+}
+
+export function App() {
   return (
     <div className="app">
       <React.Fragment>{
@@ -24,9 +34,9 @@ export default function App() {
               <Route path="/register" element={
                 <RegistrationPage />} />
               <Route path="/activity" element={
-                <ActivityPage />} />
+                <ProtectedRoute element={<ActivityPage />} />} />
               <Route path="/nutrition/*" element={
-                <NutritionPage />} />
+                <ProtectedRoute element={<NutritionPage />} />} />
               <Route path="*" element={
                 <NotFound />} />
             </Routes>

@@ -1,7 +1,6 @@
-import e from "cors"
 import * as React from "react"
 import { Link, useNavigate } from "react-router-dom"
-import apiClient from "../../services/apiClient"
+import { useAuthContext } from "../../contexts/auth"
 import "./LoginForm.css"
 
 export default function LoginForm() {
@@ -9,8 +8,11 @@ export default function LoginForm() {
   const [errors, setErrors] = React.useState({})
   const [form, setForm] = React.useState( { email:"", password:"" } )
 
+  const {user, error, setError, loginUser} = useAuthContext()
+
   const handleOnInputChange = (evt) => {
     // check if email is valid
+    setError(null)
     if (evt.target.name === "email") {
       if (evt.target.value.indexOf("@") === -1) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email" }))
@@ -21,19 +23,13 @@ export default function LoginForm() {
     setForm((f) => ({ ...f, [evt.target.name]: evt.target.value }))
   }
 
-  const loginUser = async () => {
+  const handleOnFormSubmit = async (evt) => {
+    evt.preventDefault()
     setErrors((e) => ({ ...e, form: null }))
-
-    const { data, error } = await apiClient.login( {email: form.email, password: form.password} )
-    if (error) {
-      setErrors((e) => ({...e, form: error }))
+    loginUser(form)
+    // figure out why it's not automatically redirecting without having to reload
+    if (user?.email) navigate("/activity")
     }
-    if (data?.user) {
-      apiClient.setToken(data.token)
-    }
-  }
-
-
 
   return (
     <div className="login-form">
@@ -41,16 +37,15 @@ export default function LoginForm() {
       <div className="login-card">
         <h2>Login</h2>
 
-        {Boolean(errors.form) && <span className="error">{errors.form}</span>}
+        {error && <span className="error main-error">{error}</span>}
 
         <form className="form">
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <input
               className="form-input"
-              type="email"
               name="email"
-              placeholder="user@gmail.com"
+              type="email"
               value={form.email}
               onChange={handleOnInputChange}
             />
@@ -61,23 +56,21 @@ export default function LoginForm() {
             <label htmlFor="password">Password</label>
             <input
               className="form-input"
-              type="password"
               name="password"
-              placeholder="Password"
+              type="password"
               value={form.password}
               onChange={handleOnInputChange}
             />
             {errors.password && <span className="error">{errors.password}</span>}
           </div>
 
-          <button className="submit-login" onClick={loginUser}>Login</button>
+          <button className="submit-login" onClick={handleOnFormSubmit}>Login</button>
         </form>
 
         <div className="footer">
-          <p>
-            Don't have an account? Sign up <Link to="/register">here</Link>
-          </p>
+          <p>Don't have an account? Sign up <Link to="/register">here</Link></p>
         </div>
+
       </div>
     </div>
   )

@@ -6,8 +6,6 @@ const security = require("../middleware/security")
 
 router.get("/me", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
-        // clarify when this api call would be made in the font end
-        // const userInfo = await User.makePublicUser(await User.fetchUserByEmail(req.body.email))
         const { email } = res.locals.user
         const user = await User.fetchUserByEmail(email)
         const publicUser = await User.makePublicUser(user)

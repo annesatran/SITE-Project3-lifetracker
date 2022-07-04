@@ -6,13 +6,15 @@ class ApiClient {
     constructor(remoteHostUrl) {
         this.remoteHostUrl = remoteHostUrl
         this.token = null
+        this.tokenName = "lifetracker_token"
     }
 
     setToken(token) {
         this.token = token
+        localStorage.setItem(this.tokenName, token)
     }
 
-    async request(endpoint, method = "GET", data = {}) {
+    async request({ endpoint, method = "GET", data = {} }) {
         const url = `${this.remoteHostUrl}/${endpoint}`
 
         const headers = {
@@ -28,7 +30,7 @@ class ApiClient {
             const res = await axios({ url, method, data, headers })
             return { data: res.data, error: null}
         } catch(error) {
-            console.error( {errorResponse: error.response} )
+            // console.error( {errorResponse: error.response} )
             const message = error?.response?.data?.error?.message
             return { data: null, error: message || String(error) }
         }
@@ -36,17 +38,22 @@ class ApiClient {
 
     async login(credentials) {
         // call request method to send http request to auth/login endpoint
-        return await this.request({ endpoint:"/auth/login", method:'POST', data:credentials })
+        return await this.request({ endpoint:"auth/login", method:'POST', data:credentials })
     }
 
     async signup(credentials) {
         // call request method to send http request to auth/register endpoint
-        return await this.request({ endpoint:"/auth/register", method:'POST', data:credentials })
+        return await this.request({ endpoint:"auth/register", method:'POST', data:credentials })
+    }
+
+    async logout() {
+        this.setToken(null)
+        localStorage.removeItem(this.tokenName)
     }
 
     async fetchUserFromToken() {
         // call request method to send http request to the auth/me endpoint
-        return await this.request({ endpoint:"/auth/me", method:'GET', data:{} })
+        return await this.request({ endpoint:"auth/me", method:'GET' })
     }
 
     // add more methods here as needed for making api requests

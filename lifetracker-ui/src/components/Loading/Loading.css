@@ -1,0 +1,25 @@
+.hero {
+    height: 500px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.cta {
+    display: block;
+    position: absolute;
+}
+.cta h1, .cta p {
+    position: absolute;
+    z-index: 999;
+}
+
+.cta h1 {
+    font-size: 76px;
+    font-weight: 700;
+}

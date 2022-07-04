@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
+import { useAuthContext } from "../../contexts/auth"
 import "./Navbar.css"
 
 export default function Navbar() {
@@ -22,15 +23,20 @@ export function Logo() {
 }
 
 export function NavLinks() {
+  const { user, logoutUser } = useAuthContext()
+
   return (
     <div className="nav-links">
       <Link to="/activity">Activity</Link>
-      <span>Exercise</span>
       <Link to="/nutrition">Nutrition</Link>
       <span>Sleep</span>
-      {/* <span className="logout-button" onClick={logoutUser}>Logout</span> */}
-      <Link to="/register">Sign Up</Link>
-      <Link to="/login">Login</Link>
+      <span>Exercise</span>
+      {user?.email
+        ? <span className="logout-button" onClick={logoutUser}>Logout</span>
+        :  <Link to="/login">Login</Link>}
+      {user?.email
+        ? null
+        : <Link to="/register">Sign Up</Link>}
     </div>
   )
 }

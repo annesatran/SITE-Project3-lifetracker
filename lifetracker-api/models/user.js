@@ -76,11 +76,12 @@ class User {
                 email
             )
             VALUES ($1, $2, $3, $4, $5)
-            RETURNING id, username, password, first_name, last_name, email;
+            RETURNING id, username, password, first_name, last_name, email, created_at;
         `, [lowercasedUsername, hashedPassword, credentials.firstName, credentials.lastName, lowercasedEmail])
 
         // return the user
         const user = result.rows[0]
+        console.log("111 user", user)
         return User.makePublicUser(user)
 
     }

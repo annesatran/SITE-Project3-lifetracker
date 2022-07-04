@@ -1,12 +1,14 @@
-import e from "cors"
 import * as React from "react"
 import { useNavigate, Link } from "react-router-dom"
-import apiClient from "../../services/apiClient"
+import { useAuthContext } from "../../contexts/auth"
+// import apiClient from "../../services/apiClient"
 import "./RegistrationForm.css"
 
 export default function RegistrationForm() {
   
   const navigate = useNavigate()
+  const {user, error, setError, signupUser} = useAuthContext()
+
   const [errors, setErrors] = React.useState([])
   const [form, setForm] = React.useState({
     email: "",
@@ -18,6 +20,7 @@ export default function RegistrationForm() {
   })
 
   const handleOnInputChange = (event) => {
+    // checking if password and passwordConfirm match
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({ ...e, passwordConfirm: "Passwords don't match" }))
@@ -25,6 +28,7 @@ export default function RegistrationForm() {
         setErrors((e) => ({ ...e, passwordConfirm: null }))
       }
     }
+    // checking if password and passwordConfirm match
     if (event.target.name === "passwordConfirm") {
       if (form.password && form.password !== event.target.value) {
         setErrors((e) => ({ ...e, passwordConfirm: "Passwords don't match" }))
@@ -32,6 +36,7 @@ export default function RegistrationForm() {
         setErrors((e) => ({ ...e, passwordConfirm: null }))
       }
     }
+    // checking if email has @ in it
     if (event.target.name === "email") {
       if (event.target.value.indexOf("@") === -1) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }))
@@ -43,7 +48,8 @@ export default function RegistrationForm() {
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
   }
 
-  const signupUser = async () => {
+  const handleOnFormSubmit = async (event) => {
+    event.preventDefault();
     setErrors((e) => ({ ...e, form: null }))
 
     if (form.password !== form.passwordConfirm) {
@@ -52,25 +58,16 @@ export default function RegistrationForm() {
       setErrors((e) => ({ ...e, passwordConfirm: null }))
     }
 
-    const { data, error } = await apiClient.signup( {email: form.email,
-                                                     username: form.username,
-                                                     firstName: form.firstName,
-                                                     lastName: form.lastName,
-                                                     password: form.password,
-                                                    })
-    if (error) setErrors((e) => ({...e, form: error }))
-    
-    if (data?.user) {
-      apiClient.setToken(data.token)
-    }
+    signupUser(form)
+    if (user?.email) navigate("/activity")
   }
-  
+
   return (
     <div className="registration-form">
       <div className="registration-card">
         <h2>Register</h2>
         
-        {Boolean(errors.form) && <span className="error">{errors.form}</span>}
+        {error && <span className="error main-error">{error}</span>}
         
         <form className="form">
 
@@ -154,9 +151,9 @@ export default function RegistrationForm() {
 
         </form>
 
-        <button className="submit-registration" onClick={signupUser}>Create Account</button>
+        <button className="submit-registration" onClick={handleOnFormSubmit}>Create Account</button>
         <div className="footer">
-          <p>Don't have an account? Sign up <Link to="/register">here</Link></p>
+          <p>Already have an account? Log in <Link to="/login">here</Link></p>
         </div>
       </div>
     </div>
