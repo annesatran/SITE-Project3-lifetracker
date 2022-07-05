@@ -3,7 +3,9 @@ const cors = require("cors")
 const morgan = require("morgan")
 const { PORT } = require("./config")
 const security = require("./middleware/security")
+// const permissions = require("./middleware/permissions")
 const authRoutes = require("./routes/auth")
+const nutritionRoutes = require("./routes/nutrition")
 
 const { BadRequestError, NotFoundError } = require("./utils/errors")
 
@@ -16,6 +18,7 @@ app.use(morgan("tiny"))
 app.use(security.extractUserFromJwt)
 
 app.use("/auth", authRoutes)
+app.use("/nutrition", nutritionRoutes)
 
 // 404 error handler
 app.use((req, res, next) => {

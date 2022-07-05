@@ -54,14 +54,10 @@ export function AuthContextProvider( {children} ) {
     }
 
     return (
-    <AuthContext.Provider value={ { user,
-                                    setUser,
-                                    initialized,
-                                    setInitialized,
-                                    isProcessing,
-                                    setIsProcessing,
-                                    error,
-                                    setError,
+    <AuthContext.Provider value={ { user, setUser,
+                                    initialized, setInitialized,
+                                    isProcessing, setIsProcessing,
+                                    error, setError,
                                     loginUser,
                                     signupUser,
                                     logoutUser

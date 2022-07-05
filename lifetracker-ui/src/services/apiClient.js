@@ -36,6 +36,8 @@ class ApiClient {
         }
     }
 
+    // LOGIN / REGISTRATION METHODS  =====================================================================
+
     async login(credentials) {
         // call request method to send http request to auth/login endpoint
         return await this.request({ endpoint:"auth/login", method:'POST', data:credentials })
@@ -56,7 +58,20 @@ class ApiClient {
         return await this.request({ endpoint:"auth/me", method:'GET' })
     }
 
-    // add more methods here as needed for making api requests
+    // NUTRITION METHODS  ==============================================================================
+
+    async fetchNutritionForUser() {
+        return await this.request({ endpoint:"nutrition/", method:'GET' })
+    }
+
+    async createNutrition(nutritionInfo) {
+        return await this.request({ endpoint:"nutrition/", method:'POST', data:nutritionInfo })
+    }
+
+    async fetchNutrition(nutritionId) {
+        return await this.request({ endpoint:`nutrition/${nutritionId}`, method:'GET' })
+    }
+
 
 }
 
