@@ -13,14 +13,6 @@ export default function NutritionForm() {
   const handleOnInputChange = (evt) => {
     setError(null)
 
-    // for each of the required fields, show an error message
-  //   const requiredFields = ["name", "calories", "category"]
-  //   requiredFields.forEach((field) => {
-  //     if (!form[field] || form[field]=="") {
-  //       setErrors((e) => ({ ...e, [field]: `Please enter a value for ${field}` }))
-  //     }
-  // })
-
     if (evt.target.name === "name") {
       if (evt.target.value == "") {
         setErrors((e) => ({ ...e, name: "Please enter a name" }))

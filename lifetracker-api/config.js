@@ -13,7 +13,7 @@ function getDatabaseUri() {
     const dbName = process.env.DATABASE_NAME || "lifetracker"
     const dbTestName = process.env.DATABASE_TEST_NAME || "lifetracker_test"
 
-    return process.env.DATABASE_URL || `postgresql://${dbUser}:${dbPass}@${dbHost}/${dbName}`
+    return process.env.DATABASE_URL || `postgresql://${dbUser}:${dbPass}@${dbHost}/${dbTestName}`
 }
 
 module.exports = {

@@ -63,6 +63,7 @@ export function AuthContextProvider( {children} ) {
         await ApiClient.logout()
         setUser({})
         setError(null)
+        setIsAuthed(false)
     }
 
     return (
@@ -72,7 +73,8 @@ export function AuthContextProvider( {children} ) {
                                     error, setError,
                                     loginUser,
                                     signupUser,
-                                    logoutUser
+                                    logoutUser,
+                                    isAuthed, setIsAuthed
                                    } } >
         {children}
     </AuthContext.Provider>

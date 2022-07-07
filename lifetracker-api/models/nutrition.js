@@ -4,6 +4,7 @@ const { UnauthorizedError, BadRequestError } = require("../utils/errors")
 class Nutrition {
 
     static async createNutrition(values) {
+        console.log("running createnutrition")
         // throw error if any credential fields are missing
         const requiredFields = ["name", "category", "calories", "image_url"]
         const quantity = values.quantity || 1

@@ -12,30 +12,32 @@ export function NutritionContextProvider( {children} ) {
     const [isLoading, setIsLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
 
-    const { user } = useAuthContext()
+    const { user, isAuthed } = useAuthContext()
 
     React.useEffect(() => {
         const fetchNutrition = async () => {
             const { data, error } = await ApiClient.fetchNutritionForUser()
             console.log("nutritions data in nutrition context:", data)
-            if (data) {
-              setNutritions(data)
+            if (data?.nutritions) {
+              setNutritions(data.nutritions)
               setError(null)
             }
             if (error) setError(error)
         }
 
         // if there is a user logged in
-        if (user?.email) {
+        if (isAuthed) {
             fetchNutrition()
         }
         setIsLoading(false)
         setInitialized(true)
-        }, [user, error])
+        }, [])
 
     // nutritionForm will include name, calories, imageUrl, category, quantity
     const addNutrition = async (nutritionForm) => {
+        console.log("addNutrition called in nutrition context")
         const { data, error } = await ApiClient.createNutrition({...nutritionForm, user_id: user?.id || null })
+        console.log("addNutrition called in nutrition context, received data is:", data)
         if (error) setError(error)
     }
     
