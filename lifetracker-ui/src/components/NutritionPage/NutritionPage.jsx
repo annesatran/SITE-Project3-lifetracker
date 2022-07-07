@@ -24,7 +24,7 @@ export function NutritionPage() {
           <NutritionOverview />} />
         <Route path="/create" element={
           <NutritionNew />} />
-        <Route path="/id/:nutritionid" element={
+        <Route path="/id/:nutritionId" element={
           <NutritionDetail />} />
         <Route path="/*" element={
           <NotFound />} />

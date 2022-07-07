@@ -31,6 +31,7 @@ export function NutritionContextProvider( {children} ) {
         // if there is a user logged in
         if (user?.email) {
             setIsLoading(true)
+            setError(null)
             fetchNutrition()
         }
         setIsLoading(false)

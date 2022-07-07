@@ -1,18 +1,21 @@
 import * as React from "react"
+import { Link } from "react-router-dom"
 import "./NutritionCard.css"
 
-export default function NutritionCard( {nutrition={}} ) {
+export default function NutritionCard(  {nutritionId, imageUrl="", name, calories, quantity, category, createdAt } ) {
   // nutrition is an object has the properties
     // calories, category, created_at, id, image_url, name, quantity, user_id
-  const isImage = nutrition.image_url.trim() !== ""
+  const isImage = imageUrl.trim() !== ""
   return (
     <div className="nutrition-card">
-      {isImage && <img src={nutrition.image_url} alt={nutrition.name} className="nutritionImage"/>}
-      <h1>{nutrition.name}</h1>
-      <p className="nutrition-calories">{nutrition.calories} calories</p>
-      <p className="nutrition-quantity">Quantity: {nutrition.quantity}</p>
-      <p className="nutrition-category">{nutrition.category}</p>
-      <p className="nutrition-date">{nutrition.created_at}</p>
+      {isImage && <img src={imageUrl} alt={name} className="nutritionImage"/>}
+      <Link to={"/nutrition/id/" + nutritionId}>
+        <h1>{name}</h1>
+      </Link>
+      <p className="nutrition-calories">{calories} calories</p>
+      <p className="nutrition-quantity">Quantity: {quantity}</p>
+      <p className="nutrition-category">{category}</p>
+      <p className="nutrition-date">{createdAt}</p>
 
     </div>
   )

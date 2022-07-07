@@ -14,7 +14,13 @@ export default function NutritionFeed( {nutritions=[]} ) {
       : nutritions.map(nutrition => {
           return <NutritionCard
                     key={nutrition.id}
-                    nutrition={nutrition}
+                    nutritionId={nutrition.id}
+                    imageUrl={nutrition.image_url}
+                    name={nutrition.name}
+                    calories={nutrition.calories}
+                    quantity={nutrition.quantity}
+                    category={nutrition.category}
+                    createdAt={nutrition.created_at}
                   /> }
           )
       }
