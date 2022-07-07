@@ -5,7 +5,6 @@ class Nutrition {
 
     // const nutrition = await Nutrition.createNutrition( {nutritionForm, userId} )
     static async createNutrition({nutritionForm, userId}) {
-        console.log("running createnutrition")
         // throw error if any credential fields are missing
         const requiredFields = ["name", "category", "calories", "image_url"]
 
@@ -59,6 +58,7 @@ class Nutrition {
         // get all the rows in nutrition where it's user_id matches the user_id parameter
         const query = `SELECT * FROM nutrition
                        WHERE user_id = $1
+                       ORDER BY created_at DESC
                       `
         const result = await db.query(query, [user_id])
 
