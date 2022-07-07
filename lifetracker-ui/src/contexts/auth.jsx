@@ -9,6 +9,8 @@ export function AuthContextProvider( {children} ) {
     const [isProcessing, setIsProcessing] = React.useState(false)
     const [error, setError] = React.useState(null)
 
+    const [isAuthed, setIsAuthed] = React.useState(false)
+
     React.useEffect(() => {
         const fetchUser = async () => {
           const { data, error } = await ApiClient.fetchUserFromToken()
@@ -28,23 +30,33 @@ export function AuthContextProvider( {children} ) {
         }
         setIsProcessing(false)
         setInitialized(true)
-        }, [user, error, initialized, isProcessing])
+        }, [user, isAuthed])
 
     const loginUser = async (credentials) => {
         const { data, error } = await ApiClient.login(credentials)
+        console.log(data, error)
         if (error) setError(error)
-        if (data?.user) ApiClient.setToken(data.token)
+        if (data?.user) {
+            ApiClient.setToken(data.token)
+            setIsAuthed(true)
         }
+    }
 
     const signupUser = async (credentials) => {
         const { data, error } = await ApiClient.signup(credentials)
         if (error) setError(error)
-        if (data?.user) ApiClient.setToken(data.token)
+        if (data?.user) {
+            ApiClient.setToken(data.token)
+            setIsAuthed(true)
+        }
     }
     const fetchUserFromToken = async () => {
         const { data, error } = await ApiClient.fetchUserFromToken()
         if (error) setError(error)
-        if (data?.user) ApiClient.setToken(data.token) 
+        if (data?.user) {
+            ApiClient.setToken(data.token)
+            setIsAuthed(true)
+        }
     }
 
     const logoutUser = async () => {

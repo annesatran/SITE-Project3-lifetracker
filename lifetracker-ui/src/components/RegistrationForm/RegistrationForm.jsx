@@ -7,7 +7,7 @@ import "./RegistrationForm.css"
 export default function RegistrationForm() {
   
   const navigate = useNavigate()
-  const {user, error, setError, signupUser} = useAuthContext()
+  const {setUser, user, error, setError, isProcessing, setIsProcessing, signupUser} = useAuthContext()
 
   const [errors, setErrors] = React.useState([])
   const [form, setForm] = React.useState({
@@ -19,8 +19,14 @@ export default function RegistrationForm() {
     passwordConfirm: ""
   })
 
-  const handleOnInputChange = (event) => {
-    // checking if password and passwordConfirm match
+  React.useEffect(() => {
+    if (user?.email) {
+      navigate("/")
+    }
+  }, [user, navigate])
+
+  const validateFields = (event) => {
+
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({ ...e, passwordConfirm: "Passwords don't match" }))
@@ -36,7 +42,6 @@ export default function RegistrationForm() {
         setErrors((e) => ({ ...e, passwordConfirm: null }))
       }
     }
-    // checking if email has @ in it
     if (event.target.name === "email") {
       if (event.target.value.indexOf("@") === -1) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }))
@@ -44,22 +49,21 @@ export default function RegistrationForm() {
         setErrors((e) => ({ ...e, email: null }))
       }
     }
+  }
 
+  const handleOnInputChange = (event) => {
+    // checking if password and passwordConfirm match
+    validateFields(event)
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
   }
 
   const handleOnFormSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     setErrors((e) => ({ ...e, form: null }))
 
-    if (form.password !== form.passwordConfirm) {
-      setErrors((e) => ({ ...e, passwordConfirm: "Passwords don't match" }))
-    } else {
-      setErrors((e) => ({ ...e, passwordConfirm: null }))
-    }
-
-    signupUser(form)
+    await signupUser(form)
     if (user?.email) navigate("/activity")
+
   }
 
   return (
@@ -67,7 +71,7 @@ export default function RegistrationForm() {
       <div className="registration-card">
         <h2>Register</h2>
         
-        {error && <span className="error main-error">{error}</span>}
+        {(error && !isProcessing) ? <span className="error main-error">{error}</span> : null}
         
         <form className="form">
 

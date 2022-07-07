@@ -10,6 +10,12 @@ export default function LoginForm() {
 
   const {user, error, setError, loginUser} = useAuthContext()
 
+  React.useEffect(() => {
+    if (user?.email) {
+      navigate("/")
+    }
+  }, [user, navigate])
+
   const handleOnInputChange = (evt) => {
     // check if email is valid
     setError(null)
@@ -23,11 +29,11 @@ export default function LoginForm() {
     setForm((f) => ({ ...f, [evt.target.name]: evt.target.value }))
   }
 
-  const handleOnFormSubmit = async (evt) => {
-    evt.preventDefault()
+  const handleOnFormSubmit = async (event) => {
+    event.preventDefault();
     setErrors((e) => ({ ...e, form: null }))
-    loginUser(form)
-    // figure out why it's not automatically redirecting without having to reload
+
+    await loginUser(form)
     if (user?.email) navigate("/activity")
     }
 

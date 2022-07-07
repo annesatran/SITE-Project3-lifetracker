@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   React.useEffect(() => {
     if (user?.email) navigate("/activity")
-    , []})
+    , [user]})
 
   return (
     <RegistrationForm />
