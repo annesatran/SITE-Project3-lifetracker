@@ -3,17 +3,19 @@ const { UnauthorizedError, BadRequestError } = require("../utils/errors")
 
 class Nutrition {
 
-    static async createNutrition(values) {
+    // const nutrition = await Nutrition.createNutrition( {nutritionForm, userId} )
+    static async createNutrition({nutritionForm, userId}) {
         console.log("running createnutrition")
         // throw error if any credential fields are missing
         const requiredFields = ["name", "category", "calories", "image_url"]
-        const quantity = values.quantity || 1
 
         requiredFields.forEach((field) => {
-            if (!values.hasOwnProperty(field)) {
+            if (!nutritionForm.hasOwnProperty(field)) {
                 throw new BadRequestError(`Missing ${field} in request body.`)
             }
         })
+
+        const quantity = nutritionForm?.quantity || 1
 
         // create a new nutrition instance in the database with their info
         const result = await db.query(`
@@ -25,9 +27,9 @@ class Nutrition {
                 image_url,
                 user_id
             )
-            VALUES ($1, $2, $3, $4, $5, $6, $7)
+            VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING id, name, category, quantity, calories, image_url, user_id, created_at;
-        `, [values.name, values.category, values.quantity, values.calories, values.image_url, values.user_id])
+        `, [nutritionForm.name, nutritionForm.category, quantity, nutritionForm.calories, nutritionForm.image_url, userId])
 
         const nutrition = result.rows[0]
         return nutrition

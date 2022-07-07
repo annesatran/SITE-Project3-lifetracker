@@ -6,10 +6,8 @@ import "./LoginPage.css"
 
 export default function LoginPage( {message=""} ) {
 
-  const [redirect, setRedirect] = React.useState(false)
-
   const navigate = useNavigate();
-  const {user} = useAuthContext()
+  const {user, isAuthed} = useAuthContext()
 
   React.useEffect(() => {
     if (user?.email) navigate("/activity")

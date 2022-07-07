@@ -8,13 +8,13 @@ export default function LoginForm() {
   const [errors, setErrors] = React.useState({})
   const [form, setForm] = React.useState( { email:"", password:"" } )
 
-  const {user, error, setError, loginUser} = useAuthContext()
+  const {user, error, setError, loginUser, isAuthed, setIsAuthed} = useAuthContext()
 
   React.useEffect(() => {
-    if (user?.email) {
+    if (isAuthed) {
       navigate("/")
     }
-  }, [user, navigate])
+  }, [isAuthed, navigate])
 
   const handleOnInputChange = (evt) => {
     // check if email is valid

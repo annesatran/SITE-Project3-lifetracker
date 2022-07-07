@@ -33,14 +33,15 @@ export function NavLinks() {
 
   return (
     <div className="nav-links">
+      <p>{user?.email ? user.email : "noone logged in"}</p>
       <Link to="/activity">Activity</Link>
       <Link to="/nutrition">Nutrition</Link>
       <span>Sleep</span>
       <span>Exercise</span>
-      {isAuthed
+      {user?.email
         ? <span className="logout-button" onClick={handleLogout}>Logout</span>
         :  <Link to="/login">Login</Link>}
-      {isAuthed
+      {user?.email
         ? null
         : <Link to="/register">Sign Up</Link>}
     </div>

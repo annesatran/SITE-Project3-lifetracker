@@ -16,7 +16,9 @@ router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
 
   router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
-        const nutrition = await Nutrition.createNutrition(req?.body?.nutrition)
+        const { userId } = res.locals.user
+        const nutritionForm = req?.body
+        const nutrition = await Nutrition.createNutrition( {nutritionForm, userId} )
         return res.status(201).json( { nutrition:nutrition } )
     } catch(err) {
         console.log(err)

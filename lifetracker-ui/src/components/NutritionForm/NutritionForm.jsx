@@ -52,7 +52,12 @@ export default function NutritionForm() {
   const handleOnFormSubmit = (evt) => {
     evt.preventDefault()
     setErrors((e) => ({ ...e, form: null }))
-    addNutrition(form)
+    // addNutrition(form)
+    addNutrition( { name:form.name,
+                    calories:form.calories,
+                    image_url:form.imageUrl,
+                    category:form.category,
+                    quantity:form.quantity } )
     navigate("/nutrition")
 
   }
