@@ -1,10 +1,18 @@
 import * as React from "react"
-import { useActivityContext } from "../../contexts/activity"
+import { useActivityContext, ActivityContextProvider } from "../../contexts/activity"
 import Loading from "components/Loading/Loading"
 import ActivityFeed from "components/ActivityFeed/ActivityFeed"
 import "./ActivityPage.css"
 
-export default function ActivityPage() {
+export default function ActivityContainer() {
+  return (
+    <ActivityContextProvider>
+      <ActivityPage/>
+    </ActivityContextProvider>
+  )
+}
+
+export function ActivityPage() {
 
   const { activity, isProcessing } = useActivityContext()
 

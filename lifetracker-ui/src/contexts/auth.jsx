@@ -14,7 +14,7 @@ export function AuthContextProvider( {children} ) {
     React.useEffect(() => {
         const fetchUser = async () => {
           const { data, error } = await ApiClient.fetchUserFromToken()
-          if (data) {
+          if (data?.user) {
             setUser(data.user)
             setError(null)
           }
