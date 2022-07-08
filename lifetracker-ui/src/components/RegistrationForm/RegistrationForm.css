@@ -1,29 +1,34 @@
 .registration-card {
+    margin-top: var(--navbar-height);
     min-height: calc(100vh - var(--navbar-height));
     height: 100%;
-    /* max-height: calc(100vh - var(--navbar-height)); */
     width: 50%;
     max-width: 80vw;
     color: var(--font-dark);
     background-color: var(--pure-white);
-    border-radius: var(--border-radius);
     padding: var(--card-padding);
     margin: 15px auto;
     justify-content: center;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .registration-card .form {
     color: inherit;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    width: 100%;
+    gap: 20px;
 }
 
+
 .registration-card .form .input-field {
-    color: inherit;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
 }
 
 .name-inputs {
@@ -37,24 +42,11 @@
 }
 
 .submit-registration {
-    background-color: var(--teal-accent);
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 1.05em;
-    letter-spacing: 0.1em;
-    color: var(--pure-white);
-    padding: 20px 15px;
-    border: none;
-    border-radius: calc(var(--border-radius) - 10px);
-    margin-top: 20px;
+    align-self: flex-start;
+    padding: 25px 30px;
 }
 
 .footer {
     font-size: 0.9em;
     color: var(--font-light)
-}
-
-.footer > a {
-    text-decoration: none;
-    color: var(--teal-accent)
 }

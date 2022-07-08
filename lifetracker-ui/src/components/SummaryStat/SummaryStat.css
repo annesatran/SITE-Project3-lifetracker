@@ -1,0 +1,24 @@
+.summary-stat {
+    background-color: var(--pure-white);
+    padding: 20px;
+    border-radius: var(--border-radius-style);
+    box-shadow:  0px 10px 30px -16px rgba(62, 53, 45, 0.1);
+    -webkit-box-shadow:  0px 10px 30px -16px rgba(62, 53, 45, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+    width: 32%;
+}
+
+.primary {
+    font-family: 'Lexend', sans-serif;
+    font-size: 20px;
+}
+
+.secondary-statistic {
+    font-size: 14px;
+    color: var(--font-light);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}

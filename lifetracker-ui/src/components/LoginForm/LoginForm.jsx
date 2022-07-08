@@ -11,10 +11,10 @@ export default function LoginForm() {
   const {user, error, setError, loginUser, isAuthed, setIsAuthed} = useAuthContext()
 
   React.useEffect(() => {
-    if (isAuthed) {
+    if (user?.email) {
       navigate("/")
     }
-  }, [isAuthed, navigate])
+  }, [user, navigate])
 
   const handleOnInputChange = (evt) => {
     // check if email is valid
@@ -43,7 +43,7 @@ export default function LoginForm() {
       <div className="login-card">
         <h2>Login</h2>
 
-        {error && <span className="error main-error">{error}</span>}
+        {/* {error && <span className="error main-error">{error}</span>} */}
 
         <form className="form">
           <div className="input-field">
@@ -70,11 +70,11 @@ export default function LoginForm() {
             {errors.password && <span className="error">{errors.password}</span>}
           </div>
 
-          <button className="submit-login" onClick={handleOnFormSubmit}>Login</button>
+          <button className="submit-login main-button" onClick={handleOnFormSubmit}>Login</button>
         </form>
 
         <div className="footer">
-          <p>Don't have an account? Sign up <Link to="/register">here</Link></p>
+          <p>Don't have an account? Sign up <Link to="/register" className="inline-link">here</Link></p>
         </div>
 
       </div>

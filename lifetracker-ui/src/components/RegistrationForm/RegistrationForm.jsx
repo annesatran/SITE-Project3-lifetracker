@@ -71,7 +71,7 @@ export default function RegistrationForm() {
       <div className="registration-card">
         <h2>Register</h2>
         
-        {(error && !isProcessing) ? <span className="error main-error">{error}</span> : null}
+        {/* {(error && !isProcessing) ? <span className="error main-error">{error}</span> : null} */}
         
         <form className="form">
 
@@ -155,9 +155,9 @@ export default function RegistrationForm() {
 
         </form>
 
-        <button className="submit-registration" onClick={handleOnFormSubmit}>Create Account</button>
+        <button className="submit-registration main-button" onClick={handleOnFormSubmit}>Create Account</button>
         <div className="footer">
-          <p>Already have an account? Log in <Link to="/login">here</Link></p>
+          <p>Already have an account? Log in <Link to="/login" className="inline-link">here</Link></p>
         </div>
       </div>
     </div>
