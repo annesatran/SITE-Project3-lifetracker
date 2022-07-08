@@ -14,10 +14,11 @@
 }
 
 .el-1 {
-    width: 25%;
+    width: 30%;
     display: flex;
     flex-direction: row; 
     align-items: center;
+    justify-content: flex-start;
     gap: 20px;
 }
 
@@ -29,8 +30,22 @@
 
 .nutrition-image {
     width: 90px;
+    height: 90px;
     border-radius: var(--border-radius-style);
     object-fit: cover;
+}
+
+.nutrition-ico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+}
+
+.nutrition-ico > .fa {
+    color: var(--nutrition-dark);
+    opacity: 0.15;
 }
 
 .nutrition-name {

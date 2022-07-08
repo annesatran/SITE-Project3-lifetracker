@@ -10,10 +10,14 @@ export default function NutritionCard(  {nutritionId, imageUrl="", name, calorie
   return (
     <div className="nutrition-card">
       <div className="el-1">
-        {isImage && <img src={imageUrl} alt={name} className="nutrition-image"/>}
+        {/* {isImage && <img src={imageUrl} alt={name} className="nutrition-image"/>} */}
+        {isImage
+         ? <img src={imageUrl} alt={name} className="nutrition-image"/>
+         : <div className="nutrition-ico"><i class="fa fa-solid fa-utensils fa-3x"></i></div>
+        }
         <div className="el-1-1">
         <Link to={"/nutrition/id/" + nutritionId} className="nutrition-name"><h1>{name}</h1></Link>
-        <p className="nutrition-calories">{calories} calories</p>
+        <p className="nutrition-calories">{calories} {calories == 1 ? "calorie" : "calorie"}</p>
         </div>
       </div>
       <p className="nutrition-quantity">Quantity: {quantity}</p>
