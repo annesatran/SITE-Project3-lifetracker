@@ -71,6 +71,11 @@ class ApiClient {
         return await this.request({ endpoint:`nutrition/${nutritionId}`, method:'GET' })
     }
 
+    // ACTIVITY METHODS  ==============================================================================
+
+    async calculateSummaryStats() {
+        return await this.request( { endpoint:"activity/", method:'GET' } )
+    }
 
 }
 

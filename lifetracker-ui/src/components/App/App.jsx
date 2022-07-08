@@ -1,6 +1,7 @@
 import * as React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { AuthContextProvider } from "../../contexts/auth"
+import { ActivityContextProvider } from "../../contexts/activity"
 import Navbar from "../Navbar/Navbar"
 import Landing from "../Landing/Landing"
 import LoginPage from "../LoginPage/LoginPage"
@@ -14,7 +15,9 @@ import "./App.css"
 export default function AppContainer() {
   return (
     <AuthContextProvider>
-      <App />
+      <ActivityContextProvider>
+        <App />
+      </ActivityContextProvider>
     </AuthContextProvider>
   )
 }
