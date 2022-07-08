@@ -1,7 +1,6 @@
 import * as React from "react"
 import ApiClient from "../services/apiClient"
 import { useAuthContext } from "./auth"
-// import { useNutritionContext } from "./nutrition"
 
 const ActivityContext = React.createContext()
 
@@ -13,7 +12,6 @@ export function ActivityContextProvider( {children} ) {
     const [error, setError] = React.useState(null)
 
     const { user } = useAuthContext()
-    // const { nutritions } = useNutritionContext()
 
     React.useEffect(() => {
         const fetchSummaryStatistics = async () => {

@@ -9,21 +9,25 @@ export default function NutritionFeed( {nutritions=[]} ) {
 
   return (
     <div className="nutrition-feed">
-      {nutritions.length <= 0
-      ? <p className="empty-message">Nothing here yet</p>
-      : nutritions.map(nutrition => {
-          return <NutritionCard
-                    key={nutrition.id}
-                    nutritionId={nutrition.id}
-                    imageUrl={nutrition.image_url}
-                    name={nutrition.name}
-                    calories={nutrition.calories}
-                    quantity={nutrition.quantity}
-                    category={nutrition.category}
-                    createdAt={nutrition.created_at}
-                  /> }
-          )
-      }
+      <div className="nutrition-feed-container">
+        <div className="feed">
+          {nutritions.length <= 0
+          ? <p className="empty-message">Nothing here yet</p>
+          : nutritions.map(nutrition => {
+              return <NutritionCard
+                        key={nutrition.id}
+                        nutritionId={nutrition.id}
+                        imageUrl={nutrition.image_url}
+                        name={nutrition.name}
+                        calories={nutrition.calories}
+                        quantity={nutrition.quantity}
+                        category={nutrition.category}
+                        createdAt={nutrition.created_at}
+                      /> }
+              )
+          }
+        </div>
+      </div>
     </div>
   )
 }

@@ -52,7 +52,7 @@ export function NutritionContextProvider( {children} ) {
                                     initialized, setInitialized,
                                     isLoading, setIsLoading,
                                     error, setError,
-                                    addNutrition
+                                    addNutrition, receivedNewNutrition
                                    } } >
         {children}
     </NutritionContext.Provider>

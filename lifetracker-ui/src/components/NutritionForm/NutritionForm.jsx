@@ -65,7 +65,7 @@ export default function NutritionForm() {
 
   return (
     <div className="nutrition-form">
-      <div className="nutrition-card">
+      <div className="nutrition-form-card">
         <h1>Add Nutrition</h1>
         
         {error && <span className="error main-error">{error}</span>}
@@ -131,7 +131,7 @@ export default function NutritionForm() {
               {errors.quantity && <span className="error">{errors.quantity}</span>}
           </div>
 
-          <button className="submit-nutrition" onClick={handleOnFormSubmit}>Save</button>
+          <button className="submit-nutrition main-button" onClick={handleOnFormSubmit}>Save</button>
 
         </form>
       </div>

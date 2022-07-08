@@ -48,4 +48,6 @@ button {
   --nutrition-color-dark: #646e3c;
   --exercise-color-dark: #43874d;
   --sleep-color-dark: #8f6b45;
+
+  --nutrition-color-light: #f9faf1;
 }

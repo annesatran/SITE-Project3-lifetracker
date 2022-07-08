@@ -47,8 +47,7 @@ export default function ActivityFeed( {totalCaloriesPerDay=[], avgCaloriesPerCat
                         key={index}
                         stat={dayStat.totalCaloriesPerDay}
                         label={dayStat.totalCaloriesPerDay != 1 ? "calories" : "calorie"}
-                        substat={moment(dayStat.date, 'MM/DD/YYYY')}
-                        // substat={new Date('2022', '2', '28').toLocaleDateString('en-US')}
+                        substat={moment(new Date(dayStat.date)).format("MM/DD/YYYY")}
                         />
             })}
           </div>

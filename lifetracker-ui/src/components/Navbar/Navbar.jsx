@@ -34,7 +34,7 @@ export function NavLinks() {
 
   return (
     <div className="nav-links">
-      <p>{user?.email ? user.email : null}</p>
+      {/* <p>{user?.email ? user.email : null}</p> */}
       <Link to="/activity" className="nav-link">Activity</Link>
       <Link to="/nutrition" className="nav-link">Nutrition</Link>
       <span className="nav-link">Sleep</span>

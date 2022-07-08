@@ -1,0 +1,4 @@
+.nutrition-page {
+    padding: var(--navbar-height) calc(var(--side-padding) * 2 );
+    background-color: var(--nutrition-color-light);
+}
