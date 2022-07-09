@@ -27,7 +27,7 @@ Deployed Application: NOT DEPLOYED
 - [X] The detailed activity should contain a form to contain relevant information. (i.e if tracking nutrition this form allows the user to capture calories, timestamp, image, category, etc.) 
 - [X] The activity tracked should be given a unique id for easy lookup.
 
-  * [Table Schema](📝ADD LINK TO TABLE SCHEMA.sql HERE!) 
+  * [Table Schema](https://github.com/annesatran/SITE-Project3-lifetracker/blob/main/lifetracker-api/lifetracker-schema.sql) 
 
 ### Stretch Features
 
@@ -47,10 +47,7 @@ NavBar, Landing page, login, registration, JWT tokens, authentication, and secur
 #### Week 5 Walkthrough
 NavBar, Landing page, login, registration, JWT tokens, authentication, security middleware, Activity page, detailed Nutrition page/tracking, fetchById for Nutrition
 
-<a href="https://www.loom.com/share/a4a1673407df4ee58eabb53e0738bc4c">
-    <p>LifeTracker Project 3 Week 5 Demo - 20220708 - Watch Video</p>
-    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/a4a1673407df4ee58eabb53e0738bc4c-with-play.gif">
-</a>
+[LOOM Walkthrough Recording Link](https://www.loom.com/share/a4a1673407df4ee58eabb53e0738bc4c)
 
 ![](https://cdn.loom.com/sessions/thumbnails/a4a1673407df4ee58eabb53e0738bc4c-with-play.gif)
 
@@ -80,7 +77,7 @@ Week 5: There was a big improvement in my demo compared to last week, which is r
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
-I'd like to give a shoutout to my pod mates, Christy and Charles. We went through a lot of issues that really stunted our ability to make progress throughout the entire week, which was super frustrating, but they're all super great and I'm glad to have the opportunity to work with them more.
+I'd like to give a shoutout to my pod mates, Christy and Charles. We went through a lot of issues that really stunted our ability to make progress throughout the entirety week 4, which was super frustrating, but they're all super great and I'm glad to have the opportunity to work with them more.
 
 
 
