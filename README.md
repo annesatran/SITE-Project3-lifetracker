@@ -26,7 +26,7 @@ Deployed Application: NOT DEPLOYED
 - [X] The detailed activity page should display a feed of all previous tracked activities.
 - [X] The detailed activity should contain a form to contain relevant information. (i.e if tracking nutrition this form allows the user to capture calories, timestamp, image, category, etc.) 
 - [X] The activity tracked should be given a unique id for easy lookup.
-  `TODO://` Add link to table schema in the link code below. Your file should end in `.sql` and show your schema for the detailed activities table. (🚫 Remove this paragraph after adding schema link)
+
   * [Table Schema](📝ADD LINK TO TABLE SCHEMA.sql HERE!) 
 
 ### Stretch Features
@@ -39,32 +39,46 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-Week 4 Walkthrough - NavBar, Landing page, login, registration, JWT tokens, authentication, and security middleware complete
+#### Week 4 Walkthrough
+
+NavBar, Landing page, login, registration, JWT tokens, authentication, and security middleware complete
 ![](https://i.imgur.com/14DCmqz.gif)
+
+#### Week 5 Walkthrough
+NavBar, Landing page, login, registration, JWT tokens, authentication, security middleware, Activity page, detailed Nutrition page/tracking, fetchById for Nutrition
+
+<a href="https://www.loom.com/share/a4a1673407df4ee58eabb53e0738bc4c">
+    <p>LifeTracker Project 3 Week 5 Demo - 20220708 - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/a4a1673407df4ee58eabb53e0738bc4c-with-play.gif">
+</a>
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Since we didn't do the labs for JWTs and authentication yet, I felt the most unprepared to complete these sections. We had to go in and learn everything while we were coding up the project, so I didn't feel fully comfortable with the material yet.
+Week 4: Since we didn't do the labs for JWTs and authentication yet, I felt the most unprepared to complete these sections. We had to go in and learn everything while we were coding up the project, so I didn't feel fully comfortable with the material yet.
+Week 5: After completing the labs for JWTs, authentication, and persistence, I felt a lot more comfortable making edits to that part of my code. I felt that the labs really helped with figuring out how to implement the JWTs in particular. One thing of note, however, is that the labs did not cover contexts, which I was able to implement in this project. It was definitely a learning curve and took a little bit of research, but I felt a lot more comfortable with it this week compared to last.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-I wish I had more time to fully hook up the front end and backend. My backend is basically fully setup for the authentication, but it just hasn't been wired in with my frontend yet.
+Week 4: I wish I had more time to fully hook up the front end and backend. My backend is basically fully setup for the authentication, but it just hasn't been wired in with my frontend yet.
+Week 5: At this point in my project, I have completed all the core functionality, but I would have liked to be able to implement tracking for sleep and exercise as well. In terms of improving what I already have, I would want to add some features to improve the user experience. For instance, in the nutrition tracking, I would like to group and display my card entries by day so that people are able to track through their daily habits more easily rather than having to reference the timestamp each time. I would also like to take some time refactoring some of my code in the contexts and apiClient so that it's easier to navigate as well as my CSS. I ended up cutting a few corners with the CSS given the time deadline, so I have some duplicate styling. I think that now that I have a better understanding of how my site is laid out, I can implement the CSS code a bit more efficiently.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Similar to my answer above, I wish I was able to showcase more during my demo since most of my work was in the backend and couldn't presented or visualized well.
+Week 4: Similar to my answer above, I wish I was able to showcase more during my demo since most of my work was in the backend and couldn't presented or visualized well.
+Week 5: There was a big improvement in my demo compared to last week, which is really great. I feel like week 4 was just me taking baby-steps as I was still unsure of what I was doing with the contexts and user authentication. But, this week, I was able to get in the groove of things accomplish a lot more, so I fortunately had some good progress to demonstrate to my peers. Overall, I'm pretty proud of how my demo turned out. Watching other people's demos, I was really impressed with the features other people were able to implement. For instance, one person did horizontal scrolling for their activity page, which I thought was super cool. It's always neat when I see it in people's UI designs, so I think it would be cool to try out some more advanced styling. I think maybe trying out Bootstrap for CSS is something I would like to try in future projects as well.
 
 ### Open-source libraries used
 
 - [Google Fonts](https://fonts.google.com/)
+- [FontAwesome Icons](https://fontawesome.com/icons)
 
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
-I'd like to give a shoutout to my pod mates. We went through a lot of issues that really stunted our ability to make progress throughout the entire week, which was super frustrating, but they're all super great and I'm glad to have the opportunity to work with them more.
+I'd like to give a shoutout to my pod mates, Christy and Charles. We went through a lot of issues that really stunted our ability to make progress throughout the entire week, which was super frustrating, but they're all super great and I'm glad to have the opportunity to work with them more.
 
 
 
