@@ -1,5 +1,5 @@
 import axios from "axios"
-// import API_BASE_URL from "./lifetracker-api/constants"
+import API_BASE_URL from ".././constants"
 
 class ApiClient {
 
@@ -79,5 +79,5 @@ class ApiClient {
 
 }
 
-// export default new ApiClient(API_BASE_URL || "http://localhost:3001")
-export default new ApiClient("http://localhost:3001")
+export default new ApiClient(API_BASE_URL || "http://localhost:3001")
+// export default new ApiClient("http://localhost:3001")
