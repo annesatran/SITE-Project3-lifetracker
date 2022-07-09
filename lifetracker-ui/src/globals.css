@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&display=swap');
 
 body {
   margin: 0;
@@ -10,48 +11,43 @@ body {
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-input {
-  padding: 0 15px;
-  font-size: 16px;
-  width: 100%;
-  height: 60px;
-  font-size: 16px;
-  border: 0px solid var(--border-color);
-  outline: none;
-  width: 100%;
-  background-color:#f4f5fa;
-  border-radius: calc(var(--border-radius) - 10px);
-  transition: background-color 0.2s ease-in-out;
+button {
   font-family: inherit;
 }
 
 :root {
   --navbar-height: 80px;
-  --card-padding: 40px;
-  --side-padding: 40px;
   --content-width: 1100px;
-  --navbar-height: 100px;
-  --dark-background: #2c4147;
-  --less-dark-background: #3d4a46;
-  --bright-green: #00c98e;
+  --side-padding: 40px;
+  --card-padding: 40px;
+
+  --primary-dark: #1b1b12;
+  --secondary-dark: #3f3931;
+  --orange-accent: #eD871b;
+  --orange-accent-dark: #e18018;
+
+  --font-dark: #1b1b12;
+  --font-medium: #524330;
+  --font-light: #757575;
+
   --pure-white: #fff;
-  --grey-bg: #f4f5f9;
-  --teal-accent: #68cad7;
-  --border-radius: 15px;
-  --red-linear-gradient: linear-gradient(64.7deg,rgba(251,112,144,0.25),#c90000);
-  --red-linear-gradient: linear-gradient(64.7deg,rgba(251,112,144,0.85),#c90000);
-  --red-linear-gradient: linear-gradient(64.7deg,#c90000,rgba(251,112,144,0.85));
-  --blue-linear-gradient: linear-gradient(64.7deg,#4e81eb,#4e81eb);
-  --purple-linear-gradient: linear-gradient(64.7deg,#441dfc,#4e81eb);
-  --orange-linear-gradient: linear-gradient(64.7deg,#8e3232,#c96d00);
-  --teal-linear-gradient: linear-gradient(64.7deg,#1000c9,#00c98e);
-  --aqua-linear-gradient: linear-gradient(64.7deg,#03c5d1,#03c5d1);
-  --gold-linear-gradient: linear-gradient(64.7deg,#ffab09,#ffab09);
-  --muted: #969696;
-  --font-dark: #212121;
-  --font-light: hsl(0, 0%, 36%);
+  --light-bg: #fbf9f7;
+  --light-bg-yellow: #FFF8F1;
+
+  --border-radius-style: 10px;
   --border-color: #e4e4e4;
-  --color-secondary: var(--bright-green);
+
+  --nutrition-color: #DBE5B1;
+  --exercise-color: #B1E5B8;
+  --sleep-color: #f3cfa9;
+
+  --nutrition-color-dark: #646e3c;
+  --exercise-color-dark: #43874d;
+  --sleep-color-dark: #8f6b45;
+
+  --nutrition-color-light: #f9faf1;
 }

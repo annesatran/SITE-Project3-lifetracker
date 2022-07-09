@@ -6,7 +6,6 @@ const security = require("../middleware/security")
 router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
         const { userId } = res.locals.user
-        console.log("userId:", userId)
         const nutritionList = await Nutrition.listNutritionForUser(userId)
         return res.status(200).json({ nutritions:nutritionList })
     } catch (err) {
@@ -16,23 +15,25 @@ router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
 
   router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
-        const nutrition = await Nutrition.createNutrition(req?.body?.nutrition)
+        const { userId } = res.locals.user
+        const nutritionForm = req?.body
+        const nutrition = await Nutrition.createNutrition( {nutritionForm, userId} )
         return res.status(201).json( { nutrition:nutrition } )
     } catch(err) {
         console.log(err)
         next(err)
     }
+    }) 
 
     router.get("/:nutritionId", security.requireAuthenticatedUser, async (req, res, next) => {
         try {
             const nutritionId = req.params.nutritionId
             const nutritionObj = await Nutrition.fetchNutritionById(nutritionId)
-            return res.status(200).json({ nutrition:nutritionObj })
+            return res.status(200).json({ nutrition:nutritionObj }) 
         } catch (err) {
             next(err)
         }
       })
-})
 
 
 module.exports = router

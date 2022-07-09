@@ -14,7 +14,7 @@ export function AuthContextProvider( {children} ) {
     React.useEffect(() => {
         const fetchUser = async () => {
           const { data, error } = await ApiClient.fetchUserFromToken()
-          if (data) {
+          if (data?.user) {
             setUser(data.user)
             setError(null)
           }
@@ -30,7 +30,7 @@ export function AuthContextProvider( {children} ) {
         }
         setIsProcessing(false)
         setInitialized(true)
-        }, [user, isAuthed])
+        }, [isAuthed])
 
     const loginUser = async (credentials) => {
         const { data, error } = await ApiClient.login(credentials)
@@ -60,10 +60,10 @@ export function AuthContextProvider( {children} ) {
     }
 
     const logoutUser = async () => {
-        await ApiClient.logout()
+        setIsAuthed(false)
         setUser({})
         setError(null)
-        setIsAuthed(false)
+        await ApiClient.logout()
     }
 
     return (

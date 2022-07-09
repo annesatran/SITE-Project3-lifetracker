@@ -8,12 +8,14 @@ import "./NutritionOverview.css"
 
 export default function NutritionOverview() {
 
-  const { error, setError, isLoading, nutritions } = useNutritionContext()
+  const { error, isLoading, nutritions } = useNutritionContext()
 
   return (
     <div className="nutrition-overview">
-      <Link to="/nutrition/create" element={<NutritionNew />} >
+      <div className="button-container">
+      <Link to="/nutrition/create" className="record-nutrition-button main-button" element={<NutritionNew />} >
         Record Nutrition</Link>
+      </div>
       {error && <div className="error">{error}</div>}
       {isLoading
       ? <Loading />

@@ -1,0 +1,41 @@
+.nutrition-form-card {
+    margin-top: var(--navbar-height);
+    min-height: calc(100vh - var(--navbar-height));
+    height: 100%;
+    width: 50%;
+    max-width: 80vw;
+    color: var(--font-dark);
+    background-color: var(--pure-white);
+    padding: var(--card-padding);
+    margin: 15px auto;
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.nutrition-form-card .form {
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.nutrition-form-card .form .input-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.submit-nutrition {
+    align-self: flex-start;
+    padding: 25px 30px;
+}
+
+.error {
+    color: #e45d6b;
+    font-size: 0.8em;
+}

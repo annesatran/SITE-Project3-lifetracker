@@ -1,0 +1,9 @@
+.nutrition-overview {
+    background-color: red !important;
+    margin:0 auto;
+}
+
+.button-container {
+    float: right;
+    margin-top: -60px;
+}

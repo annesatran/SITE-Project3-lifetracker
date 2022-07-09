@@ -3,17 +3,18 @@ const { UnauthorizedError, BadRequestError } = require("../utils/errors")
 
 class Nutrition {
 
-    static async createNutrition(values) {
-        console.log("running createnutrition")
+    // const nutrition = await Nutrition.createNutrition( {nutritionForm, userId} )
+    static async createNutrition({nutritionForm, userId}) {
         // throw error if any credential fields are missing
         const requiredFields = ["name", "category", "calories", "image_url"]
-        const quantity = values.quantity || 1
 
         requiredFields.forEach((field) => {
-            if (!values.hasOwnProperty(field)) {
+            if (!nutritionForm.hasOwnProperty(field)) {
                 throw new BadRequestError(`Missing ${field} in request body.`)
             }
         })
+
+        const quantity = nutritionForm?.quantity || 1
 
         // create a new nutrition instance in the database with their info
         const result = await db.query(`
@@ -25,9 +26,9 @@ class Nutrition {
                 image_url,
                 user_id
             )
-            VALUES ($1, $2, $3, $4, $5, $6, $7)
+            VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING id, name, category, quantity, calories, image_url, user_id, created_at;
-        `, [values.name, values.category, values.quantity, values.calories, values.image_url, values.user_id])
+        `, [nutritionForm.name, nutritionForm.category, quantity, nutritionForm.calories, nutritionForm.image_url, userId])
 
         const nutrition = result.rows[0]
         return nutrition
@@ -38,7 +39,7 @@ class Nutrition {
             throw new BadRequestError("No nutrition ID provided")
         }
 
-        const query = `SELECT * FROM users WHERE id = $1`
+        const query = `SELECT * FROM nutrition WHERE id = $1 LIMIT 1`
         const result = await db.query(query, [id])
 
         if (result) {
@@ -57,6 +58,7 @@ class Nutrition {
         // get all the rows in nutrition where it's user_id matches the user_id parameter
         const query = `SELECT * FROM nutrition
                        WHERE user_id = $1
+                       ORDER BY created_at DESC
                       `
         const result = await db.query(query, [user_id])
 

@@ -1,0 +1,66 @@
+
+.activity-feed-container {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    background-color: var(--light-bg-yellow);
+}
+
+.activity-feed-container > * {
+    color: var(--font-medium);
+}
+
+.activity-feed {
+    padding: var(--navbar-height) calc(var(--side-padding) * 2 );
+}
+
+.header-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.record-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.record-nutrition-button {
+    background-color: var(--nutrition-color) !important;
+    color: var(--nutrition-color-dark) !important;
+    
+}
+
+.record-sleep-button {
+    background-color: var(--sleep-color) !important;
+    color: var(--sleep-color-dark) !important;
+    
+}
+
+.record-exercise-button {
+    background-color: var(--exercise-color) !important;
+    color: var(--exercise-color-dark) !important;
+}
+
+.feed-block {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stat-feed {
+    margin: 20px 0;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 15px;
+}
+
+.activity-feed h4 {
+    font-size: 20px;
+}
+
+

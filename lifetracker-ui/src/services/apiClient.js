@@ -1,5 +1,5 @@
 import axios from "axios"
-// import API_BASE_URL from "lifetracker-api/constants.js"
+// import API_BASE_URL from "./lifetracker-api/constants"
 
 class ApiClient {
 
@@ -16,7 +16,6 @@ class ApiClient {
 
     async request({ endpoint, method = "GET", data = {} }) {
         const url = `${this.remoteHostUrl}/${endpoint}`
-
         const headers = {
             "Content-Type": "application/json"
         }
@@ -64,14 +63,19 @@ class ApiClient {
         return await this.request({ endpoint:"nutrition/", method:'GET' })
     }
 
-    async createNutrition(nutritionInfo) {
-        return await this.request({ endpoint:"nutrition/", method:'POST', data:nutritionInfo })
+    async createNutrition(nutritionForm) {
+        return await this.request({ endpoint:"nutrition/", method:'POST', data:nutritionForm })
     }
 
     async fetchNutrition(nutritionId) {
         return await this.request({ endpoint:`nutrition/${nutritionId}`, method:'GET' })
     }
 
+    // ACTIVITY METHODS  ==============================================================================
+
+    async calculateSummaryStats() {
+        return await this.request( { endpoint:"activity/", method:'GET' } )
+    }
 
 }
 
