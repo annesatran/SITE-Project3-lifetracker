@@ -52,6 +52,8 @@ NavBar, Landing page, login, registration, JWT tokens, authentication, security 
     <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/a4a1673407df4ee58eabb53e0738bc4c-with-play.gif">
 </a>
 
+![](https://cdn.loom.com/sessions/thumbnails/a4a1673407df4ee58eabb53e0738bc4c-with-play.gif)
+
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
