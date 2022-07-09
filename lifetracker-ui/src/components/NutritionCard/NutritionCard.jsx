@@ -17,7 +17,7 @@ export default function NutritionCard(  {nutritionId, imageUrl="", name, calorie
         }
         <div className="el-1-1">
         <Link to={"/nutrition/id/" + nutritionId} className="nutrition-name"><h1>{name}</h1></Link>
-        <p className="nutrition-calories">{calories} {calories == 1 ? "calorie" : "calorie"}</p>
+        <p className="nutrition-calories">{calories} {calories == 1 ? "calorie" : "calories"}</p>
         </div>
       </div>
       <p className="nutrition-quantity">Quantity: {quantity}</p>
